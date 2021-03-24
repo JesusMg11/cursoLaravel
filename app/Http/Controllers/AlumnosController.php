@@ -70,7 +70,8 @@ class AlumnosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumno = Alumno :: find($id);
+        return view('admin.alumnos.alumnosEdit')->with('alumno',$alumno);
     }
 
     /**
@@ -82,7 +83,18 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Tomamos los datos a actualizar del form y los guardamos en un objeto $alumno
+        $alumno = Alumno :: find($id);
+        $alumno -> ncontrol = $request->ncontrol;
+        $alumno -> nombre = $request->nombre;
+        $alumno -> direccion = $request->direccion;
+        $alumno -> nacimiento = $request->nacimiento;
+        $alumno -> telefono = $request->telefono;
+        $alumno -> correo = $request->correo;
+        //Guardamos los datos en la bd
+        $alumno -> save();
+        //Regresamos
+        return redirect() -> route('alumnos.inicio');
     }
 
     /**
@@ -93,6 +105,8 @@ class AlumnosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alumno = Alumno :: find($id);
+        $alumno -> delete();
+        return redirect() -> route('alumnos.inicio');
     }
 }

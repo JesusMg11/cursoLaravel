@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route :: get ('alumnos/index','AlumnosController@index')->name('alumnos.inicio');
 Route :: get ('alumnos/store','AlumnosController@store')->name('alumnos.store');
+Route :: get ('alumnos/edit/{id}','AlumnosController@edit')->name('alumnos.edit');
+Route :: get ('alumnos/update/{id}','AlumnosController@update')->name('alumnos.update');
+Route :: get ('alumnos/eliminar/{id}','AlumnosController@destroy')->name('alumnos.eliminar');
